@@ -1,0 +1,4 @@
+script:
+  - ./build.sh
+services:
+  - docker
