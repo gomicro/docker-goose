@@ -1,0 +1,47 @@
+name: Build
+on: [push]
+
+jobs:
+
+  dockerize:
+    name: Dockerize
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Build Latest
+        run: docker build -t ${{ github.repository_owner }}/goose:latest .
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [dockerize]
+    if: startsWith(github.ref, 'ref/tags/')
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Login to github registry
+        uses: actions-hub/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Latest
+        if: success()
+        run: |
+          docker build -t ${{ github.repository_owner }}/goose:latest .
+          docker tag ${{ github.repository_owner }}/goose:latest ${{ github.repository_owner }}/goose:${IMAGE_TAG}
+
+      - name: Push Tag
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: push ${{ github.repository_owner }}/goose:${IMAGE_TAG}
+
+      - name: Push Latest
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: push ${{ github.repository_owner }}/goose:latest
