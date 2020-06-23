@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3
 MAINTAINER Daniel Hess <dan9186@gmail.com>
 
 RUN apk update && \
