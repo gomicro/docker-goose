@@ -7,7 +7,7 @@ The purposed of this docker image is to create a super tiny image for running mi
 
 It is built on top of Alpine with the latest stable release of goose and bash installed.
 
-## Usage
+# Usage
 
 It is recommended to build your own migration images from this one with an entrypoint to execute everything. This is to ensure the same migrations can be run in your environments.
 
@@ -21,7 +21,7 @@ project
 |_ ...
 ```
 
-###Dockerfile
+### Dockerfile
 
 ```
 FROM gomicro/goose
@@ -32,7 +32,7 @@ ADD entrypoint.sh /migrations/
 ENTRYPOINT ["/migrations/entrypoint.sh"]
 ```
 
-###Entrypoint
+### Entrypoint
 
 ```
 #!/bin/bash
@@ -42,7 +42,7 @@ DBSTRING="host=$DBHOST user=$DBUSER password=$DBPASSWORD dbname=$DBNAME sslmode=
 goose postgres "$DBSTRING" up
 ```
 
-###Migrations
+### Migrations
 
 See goose's documentation for [SQL Migrations](https://github.com/pressly/goose#sql-migrations) on how to structure the migration files.
 
