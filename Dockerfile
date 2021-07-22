@@ -1,5 +1,5 @@
-FROM alpine:3
-MAINTAINER Daniel Hess <dan9186@gmail.com>
+FROM alpine:3.14.0
+MAINTAINER Gomicro Dev <dev@gomicro.io>
 
 RUN apk update && \
     apk upgrade && \
