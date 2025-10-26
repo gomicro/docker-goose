@@ -6,7 +6,7 @@ RUN apk update && \
     apk add bash && \
     rm -rf /var/cache/apk/*
 
-ADD https://github.com/pressly/goose/releases/download/v3.25.0/goose_linux_x86_64 /bin/goose
+ADD https://github.com/pressly/goose/releases/download/v3.26.0/goose_linux_x86_64 /bin/goose
 RUN chmod +x /bin/goose
 
 WORKDIR /migrations
