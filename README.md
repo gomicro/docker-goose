@@ -1,5 +1,5 @@
 # Docker goose
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/gomicro/docker-goose/Build/master)](https://github.com/gomicro/docker-goose/actions?query=workflow%3ABuild+branch%3Amaster)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/gomicro/docker-goose/build.yml)](https://github.com/gomicro/docker-goose/actions/workflows/build.yml)
 [![License](https://img.shields.io/github/license/gomicro/docker-goose.svg)](https://github.com/gomicro/docker-goose/blob/master/LICENSE.md)
 [![Release](https://img.shields.io/github/release/gomicro/docker-goose.svg)](https://github.com/gomicro/docker-goose/releases/latest)
 
